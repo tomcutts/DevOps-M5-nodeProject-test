@@ -38,7 +38,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    sh "docker run -d --name nodejs-project -p 80:5000 nodejs-project:${BUILD_NUMBER}"
+                    sh "docker run -d --name nodejs-project -p 5000:80 nodejs-project:${BUILD_NUMBER}"
                     sh "docker ps -a"
                 }
             }
@@ -53,7 +53,7 @@ pipeline {
         }
         success {
             script {
-                sh "echo Deployment successful. App is running on port 80 → container port 5000."
+                sh "echo Deployment successful."
             }
         }
         failure {
